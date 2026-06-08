@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ Eu te amo ❤️</title>
+
+<style>
+    body{
+    margin:0;
+    background:#000;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+}
+
+#heart{
+    position:relative;
+    width:700px;
+    height:700px;
+}
+
+.love{
+    position:absolute;
+
+    will-change:transform;
+
+    color:#ff9ac8;
+
+    font-family:Arial,sans-serif;
+    font-size:12px;
+
+    white-space:nowrap;
+
+    text-shadow:0 0 6px #ff9ac8;
+
+    transform:translate(-50%, -50%);
+}
+#nome{
+    position:absolute;
+
+    color:white;
+
+    font-size:50px;
+    font-weight:bold;
+
+    font-family:Arial,sans-serif;
+
+    text-shadow:
+        0 0 10px #ff9ac8,
+        0 0 20px #ff9ac8;
+
+    z-index:999;
+}
+body{
+    margin:0;
+    background:black;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+}
+
+#heart{
+    position:relative;
+    width:700px;
+    height:700px;
+}
+
+.love{
+    position:absolute;
+
+    color:#ff9ac8;
+
+    font-family:Arial,sans-serif;
+    font-size:12px;
+
+    white-space:nowrap;
+
+    text-shadow:
+        0 0 4px #ff9ac8;
+
+    transform:translate(-50%, -50%);
+}
+</style>
+</head>
+<body>
+
+<div id="heart"></div>
+<div id="nome">K❤️K</div>
+
+<script>
+
+const heart = document.getElementById("heart");
+
+const CENTER = 350;
+const SCALE = 16;
+
+const palavras = [];
+
+for(let camada = 0; camada < 4; camada++){
+
+    const escalaCamada = SCALE - camada * 1.5;
+
+    for(let t = 0; t < Math.PI * 2; t += 0.06){
+
+        const span = document.createElement("span");
+
+        span.className = "love";
+        span.textContent = "Eu te amo";
+
+        heart.appendChild(span);
+
+        palavras.push({
+            el: span,
+            offset: t,
+            escala: escalaCamada
+        });
+    }
+}
+
+for(let t = 0; t < Math.PI * 2; t += 0.04){
+
+    const span = document.createElement("span");
+
+    span.className = "love";
+    span.textContent = "Eu te amo";
+
+    heart.appendChild(span);
+
+    palavras.push({
+        el: span,
+        offset: t
+    });
+}
+
+function animar(){
+
+    const tempo = performance.now() * 0.001;
+
+    for(const p of palavras){
+
+        const t = p.offset + tempo;
+
+        const x =
+            16 * Math.pow(Math.sin(t),3);
+
+        const y =
+            13 * Math.cos(t)
+            - 5 * Math.cos(2*t)
+            - 2 * Math.cos(3*t)
+            - Math.cos(4*t);
+
+        p.el.style.left =
+            (CENTER + x * SCALE) + "px";
+
+        p.el.style.top =
+            (CENTER - y * SCALE) + "px";
+    }
+
+    requestAnimationFrame(animar);
+}
+
+animar();
+
+</script>
+
+</body>
+</html>
