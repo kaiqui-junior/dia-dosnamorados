@@ -6,21 +6,37 @@
 <title>sério?</title>
 
 <style>
-body{
+*{
     margin:0;
-    overflow:hidden;
-    background:black;
-    font-family:Arial, sans-serif;
-    
-    background-image:url("foto4.png");
-    background-size:100%;
-    background-position:show center;
-    background-repeat:no-repeat;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* texto central */
+body{
+    background:black;
+    font-family:Arial, sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+#fotos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    min-height:100vh;
+    padding:100px 20px 120px;
+}
+
+#fotos img{
+    max-width:40%;
+    max-height:65vh;
+    object-fit:contain;
+    border-radius:10px;
+}
+
 h1{
-    position:absolute;
+    position:fixed;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
@@ -28,12 +44,17 @@ h1{
     font-size:42px;
     text-align:center;
     text-shadow:0 0 15px red;
-    z-index:10;
+    z-index:1000;
+    pointer-events:none;
+}
+h1{
+    background:rgba(0,0,0,0.5);
+    padding:10px 20px;
+    border-radius:15px;
 }
 
-/* botão voltar */
 #btn{
-    position:absolute;
+    position:fixed;
     bottom:30px;
     left:50%;
     transform:translateX(-50%);
@@ -50,46 +71,68 @@ h1{
 
     box-shadow:0 0 15px red;
     transition:0.2s;
-    z-index:10;
+    z-index:1000;
 }
 
 #btn:hover{
     transform:translateX(-50%) scale(1.05);
 }
 
-/* coração partido */
 .heart{
-    position:absolute;
+    position:fixed;
     top:-50px;
     font-size:22px;
     color:#ff4d4d;
     animation:fall linear forwards;
     text-shadow:0 0 10px red;
     pointer-events:none;
+    z-index:999;
 }
 
-/* queda */
 @keyframes fall{
     to{
         transform:translateY(110vh);
         opacity:0;
     }
 }
+
+@media (max-width:768px){
+
+    #fotos{
+        flex-direction:column;
+        padding-top:100px;
+        padding-bottom:120px;
+        gap:20px;
+    }
+
+    #fotos img{
+        width:80%;
+        max-width:300px;
+        max-height:35vh;
+    }
+
+    h1{
+        font-size:30px;
+        width:90%;
+    }
+}
 </style>
 
 </head>
-
 <body>
 
 <h1>sério? 😔</h1>
 
-<!-- botão voltar -->
+<div id="fotos">
+    <img src="foto4.png" alt="">
+    <img src="foto6.png" alt="">
+</div>
+
 <a href="index.html">
     <button id="btn">voltar 💔</button>
 </a>
 
 <script>
-
 function criarCoracaoPartido(){
     const c = document.createElement("div");
     c.className = "heart";
@@ -109,7 +152,6 @@ function criarCoracaoPartido(){
 }
 
 setInterval(criarCoracaoPartido, 120);
-
 </script>
 
 </body>

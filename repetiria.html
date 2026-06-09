@@ -14,41 +14,49 @@ body{
 
     background-image:url("foto1.png");
     background-size:50%;
-    background-position:top center;
+    background-position:center top;
     background-repeat:no-repeat;
 }
 
-/* texto central */
 h1{
     position:absolute;
-    top:45%;
+    top:55%;
     left:50%;
     transform:translate(-50%,-50%);
+
+    width:90%;
+
     color:#ff9ac8;
-    font-size:38px;
+    font-size:clamp(26px, 6vw, 38px);
+
     text-align:center;
     text-shadow:0 0 15px #ff9ac8;
+
     z-index:10;
 }
 
-/* botões */
 #buttons{
     position:absolute;
-    top:60%;
+    top:70%;
     left:50%;
     transform:translateX(-50%);
+
     display:flex;
     gap:20px;
+
     z-index:10;
 }
 
 button{
     padding:12px 24px;
     font-size:16px;
+
     border:none;
     border-radius:12px;
+
     cursor:pointer;
     font-weight:bold;
+
     transition:0.2s;
 }
 
@@ -66,7 +74,6 @@ button:hover{
     transform:scale(1.05);
 }
 
-/* corações */
 .heart{
     position:absolute;
     top:-50px;
@@ -81,6 +88,28 @@ button:hover{
     to{
         transform:translateY(110vh);
         opacity:0;
+    }
+}
+
+@media (max-width:768px){
+
+    body{
+        background-size:100%;
+    }
+
+    h1{
+        top:60%;
+        font-size:30px;
+    }
+
+    #buttons{
+        top:75%;
+        gap:12px;
+    }
+
+    button{
+        padding:10px 18px;
+        font-size:14px;
     }
 }
 </style>
@@ -98,17 +127,14 @@ button:hover{
 
 <script>
 
-/* botão SIM */
 document.getElementById("sim").onclick = () => {
     window.location.href = "coracao.html";
 };
 
-/* botão NÃO */
 document.getElementById("nao").onclick = () => {
     window.location.href = "serio.html";
 };
 
-/* chuva de corações */
 function criarCoracao(){
     const c = document.createElement("div");
     c.className = "heart";
