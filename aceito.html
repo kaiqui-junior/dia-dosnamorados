@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Dia dos Namorados ❤️</title>
+
+<style>
+
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:black;
+    font-family:Arial, sans-serif;
+    background-image:url("foto3.png");
+    background-size:42%;
+    background-position:top center;
+    background-repeat:no-repeat;
+}
+
+/* texto */
+h1{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:#ff9ac8;
+    font-size:40px;
+    text-align:center;
+    text-shadow:0 0 15px #ff9ac8;
+    z-index:10;
+}
+
+/* botão */
+#btn{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+
+    padding:12px 24px;
+    font-size:16px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+
+    background:#ff9ac8;
+    color:black;
+    font-weight:bold;
+
+    box-shadow:0 0 15px #ff9ac8;
+    transition:0.2s;
+    z-index:10;
+}
+
+#btn:hover{
+    transform:translateX(-50%) scale(1.05);
+}
+
+/* chuva */
+.heart{
+    position:absolute;
+    top:-50px;
+    color:#ff9ac8;
+    font-size:24px;
+    animation:fall linear forwards;
+    text-shadow:0 0 10px #ff9ac8;
+    pointer-events:none;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Feliz Dia dos Namorados 💖</h1>
+
+<!-- botão de voltar -->
+<a href="index.html">
+    <button id="btn">Voltar</button>
+</a>
+
+<script>
+
+function criarCoracao(){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+
+    const size = Math.random() * 20 + 10;
+    heart.style.fontSize = size + "px";
+
+    const duration = Math.random() * 3 + 3;
+    heart.style.animationDuration = duration + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+}
+
+// chuva funcionando
+setInterval(criarCoracao, 120);
+
+</script>
+
+</body>
+</html>

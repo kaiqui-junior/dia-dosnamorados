@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💖 pergunta</title>
+<title>sério?</title>
 
 <style>
 body{
@@ -11,72 +11,64 @@ body{
     overflow:hidden;
     background:black;
     font-family:Arial, sans-serif;
-
-    background-image:url("foto7.png");
-    background-size:55%;
-    background-position:top center;
+    
+    background-image:url("foto4.png");
+    background-size:100%;
+    background-position:show center;
     background-repeat:no-repeat;
 }
 
 /* texto central */
 h1{
     position:absolute;
-    top:45%;
+    top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    color:#ff9ac8;
-    font-size:38px;
+    color:#ff4d4d;
+    font-size:42px;
     text-align:center;
-    text-shadow:0 0 15px #ff9ac8;
+    text-shadow:0 0 15px red;
     z-index:10;
 }
 
-/* botões */
-#buttons{
+/* botão voltar */
+#btn{
     position:absolute;
-    top:60%;
+    bottom:30px;
     left:50%;
     transform:translateX(-50%);
-    display:flex;
-    gap:20px;
-    z-index:10;
-}
 
-button{
     padding:12px 24px;
     font-size:16px;
     border:none;
     border-radius:12px;
     cursor:pointer;
-    font-weight:bold;
-    transition:0.2s;
-}
 
-#sim{
-    background:#ff9ac8;
-    box-shadow:0 0 15px #ff9ac8;
-}
-
-#nao{
     background:#444;
     color:white;
+    font-weight:bold;
+
+    box-shadow:0 0 15px red;
+    transition:0.2s;
+    z-index:10;
 }
 
-button:hover{
-    transform:scale(1.05);
+#btn:hover{
+    transform:translateX(-50%) scale(1.05);
 }
 
-/* corações */
+/* coração partido */
 .heart{
     position:absolute;
     top:-50px;
-    color:#ff9ac8;
-    font-size:20px;
+    font-size:22px;
+    color:#ff4d4d;
     animation:fall linear forwards;
+    text-shadow:0 0 10px red;
     pointer-events:none;
-    text-shadow:0 0 10px #ff9ac8;
 }
 
+/* queda */
 @keyframes fall{
     to{
         transform:translateY(110vh);
@@ -89,30 +81,19 @@ button:hover{
 
 <body>
 
-<h1>eu te faço feliz? 💖</h1>
+<h1>sério? 😔</h1>
 
-<div id="buttons">
-    <button id="sim">SIM 💖</button>
-    <button id="nao">NÃO 💔</button>
-</div>
+<!-- botão voltar -->
+<a href="index.html">
+    <button id="btn">voltar 💔</button>
+</a>
 
 <script>
 
-/* botão SIM */
-document.getElementById("sim").onclick = () => {
-    window.location.href = "suficiente.html";
-};
-
-/* botão NÃO */
-document.getElementById("nao").onclick = () => {
-    window.location.href = "serio.html";
-};
-
-/* chuva de corações */
-function criarCoracao(){
+function criarCoracaoPartido(){
     const c = document.createElement("div");
     c.className = "heart";
-    c.innerText = "💖";
+    c.innerText = "💔";
 
     c.style.left = Math.random() * window.innerWidth + "px";
 
@@ -127,7 +108,7 @@ function criarCoracao(){
     setTimeout(() => c.remove(), duration * 1000);
 }
 
-setInterval(criarCoracao, 120);
+setInterval(criarCoracaoPartido, 120);
 
 </script>
 
